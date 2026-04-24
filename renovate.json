@@ -9,6 +9,7 @@
       "matchPackageNames": ["ghcr.io/home-assistant/base"],
       "versionCompatibility": "^(?<compatibility>\\d+\\.\\d+)-(?<version>\\d+\\.\\d+\\.\\d+)$",
       "versioning": "pep440",
+      "sourceUrl": "https://github.com/home-assistant/docker-base",
       "groupName": "docker-base",
       "commitMessageTopic": "home-assistant/base:3.23 image",
       "commitMessageExtra": "to {{newValue}}"
