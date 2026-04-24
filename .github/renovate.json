@@ -1,26 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "enabledManagers": ["custom.regex"],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["^Dockerfile$"],
-      "matchStrings": [
-        "BUILD_FROM=(?<image>ghcr\\.io/home-assistant/base:(?<alpineVersion>alpine[0-9\\.]+))-(?<currentValue>[0-9]+\\.[0-9]+\\.[0-9]+)"
-      ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "home-assistant/docker-base"
-    }
-  ],
+  "enabledManagers": ["dockerfile"],
+  "ignorePaths": [".devcontainer/**"],
   "packageRules": [
     {
-      "matchDatasources": ["github-releases"],
-      "matchDepNames": ["home-assistant/docker-base"],
-      "groupName": "docker-base",
-      "commitMessageTopic": "home-assistant/docker-base image",
-      "commitMessageExtra": "to {{newVersion}}",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/home-assistant/base"],
+      "versionCompatibility": "^(?<compatibility>\\d+\\.\\d+)-(?<version>\\d+\\.\\d+\\.\\d+)$",
       "versioning": "pep440",
-      "minimumReleaseAge": "1 hour"
+      "groupName": "docker-base",
+      "commitMessageTopic": "home-assistant/base:3.23 image",
+      "commitMessageExtra": "to {{newValue}}"
     }
   ]
 }
